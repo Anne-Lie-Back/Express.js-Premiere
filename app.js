@@ -44,10 +44,17 @@ app.get('/dogs/:id', (req, res) => {
     res.send(dog)
 })
 
+function generateID(){
+     return new Date().getUTCMilliseconds()
+}
+
 //POST
 app.post('/dogs', (req, res) => {
+    if(!req.body.breed||!req.body.breed||!req.body.age){
+        return res.status(400).send('You missed something in your input')
+    }
     const dog = {
-        id: dogs.length + 1,
+        id: generateID(),
         name: req.body.name,
         breed: req.body.breed,
         age: req.body.age

@@ -6,20 +6,19 @@ POST http://localhost:5000/dogs
 Content-Type: application/json
 
 {
-    "name": "Flingan",
-    "breed": "Coton de tulear",
-    "age": "1"
+    "name": "Merlin",
+    "breed":"15"
 }
 
 ###
 
-PUT http://localhost:5000/dogs/5
+PUT http://localhost:5000/dogs/352
 Content-Type: application/json
 
 {
-    "name": "Sonic",
-    "breed": "Whippet",
-    "age": "3"
+    "name": "Merlin",
+    "breed": "Coton de tulear",
+    "age": "15"
 }
 
 ###
