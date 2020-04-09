@@ -50,8 +50,8 @@ function generateID(){
 
 //POST
 app.post('/dogs', (req, res) => {
-    if(!req.body.breed||!req.body.breed||!req.body.age){
-        return res.status(400).send('You missed something in your input')
+    if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
+        return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
     }
     const dog = {
         id: generateID(),

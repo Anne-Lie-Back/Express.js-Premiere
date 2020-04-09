@@ -7,7 +7,8 @@ Content-Type: application/json
 
 {
     "name": "Merlin",
-    "breed":"15"
+    "breed":"Coton de tulear",
+    "age":"12"
 }
 
 ###
