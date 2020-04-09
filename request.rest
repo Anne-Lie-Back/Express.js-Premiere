@@ -1,0 +1,26 @@
+GET http://localhost:5000/dogs
+
+###
+
+POST http://localhost:5000/dogs
+Content-Type: application/json
+
+{
+    "name": "Flingan",
+    "breed": "Coton de tulear",
+    "age": "1"
+}
+
+###
+
+PUT http://localhost:5000/dogs/5
+Content-Type: application/json
+
+{
+    "name": "Sonic",
+    "breed": "Whippet",
+    "age": "3"
+}
+
+###
+DELETE http://localhost:5000/dogs/3
