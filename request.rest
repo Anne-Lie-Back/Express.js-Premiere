@@ -13,13 +13,13 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/dogs/352
+PUT http://localhost:5000/dogs/2
 Content-Type: application/json
 
 {
-    "name": "Merlin",
-    "breed": "Coton de tulear",
-    "age": "15"
+    "name": "Ozzy",
+    "breed": "Chihuahua",
+    "age": "10"
 }
 
 ###

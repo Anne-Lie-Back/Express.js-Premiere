@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('public'))
 
 const dogs = [
     {
@@ -28,7 +29,11 @@ const dogs = [
         breed: 'Corgi',
         age: 2
     }
-] 
+]
+
+function generateID(){
+    return new Date().getUTCMilliseconds()
+}
 
 // GET
 app.get('/dogs', (req, res) => {
@@ -43,10 +48,6 @@ app.get('/dogs/:id', (req, res) => {
     }
     res.send(dog)
 })
-
-function generateID(){
-     return new Date().getUTCMilliseconds()
-}
 
 //POST
 app.post('/dogs', (req, res) => {
@@ -90,8 +91,6 @@ app.delete('/dogs/:id', (req, res) => {
 })
 
 //WHERE TO LISTEN
-const port = 5000
-
-app.listen(port, () => {
-    console.log(`Listening to port ${port}`)
+app.listen(5000, () => {
+    console.log(`Listening to port 5000`)
 })
