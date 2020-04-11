@@ -79,6 +79,7 @@ app.put('/dogs/:id', (req, res) => {
 })
 
 //DELETE
+
 app.delete('/dogs/:id', (req, res) => {
     const dog = dogs.find( d => d.id === parseInt(req.params.id))
     if(!dog){

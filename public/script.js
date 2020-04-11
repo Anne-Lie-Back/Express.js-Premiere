@@ -15,12 +15,26 @@ function printAllDogs(dogs){
         dogBreed.innerText = dog.breed
         let dogAge = document.createElement('h5')
         dogAge.innerText = `Ålder: ${dog.age}år`
+        let deleteButton = document.createElement('button')
+        deleteButton.innerText = 'Delete'
+        deleteButton.addEventListener('click',() => {
+            fetch(`/dogs/${dog.id}`, {method: 'DELETE'})
+        });
 
-        let dogDiv = document.createElement('div')
-        dogDiv.appendChild(dogName)
-        dogDiv.appendChild(dogBreed)
-        dogDiv.appendChild(dogAge)
+        let dogListItem = document.createElement('li')
+        dogListItem.appendChild(dogName)
+        dogListItem.appendChild(dogBreed)
+        dogListItem.appendChild(dogAge)
+        dogListItem.appendChild(deleteButton)
 
-        container.appendChild(dogDiv)
+        container.appendChild(dogListItem)
     })
 }
+
+/* function updateList(){
+    const ul = document.querySelector('ul')
+    while( ul.firstChild ){
+        ul.removeChild(ul.firstChild );
+    }
+    printAllDogs()
+} */
