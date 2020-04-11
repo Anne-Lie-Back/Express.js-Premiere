@@ -7,18 +7,6 @@ app.use(express.static('public'))
 
 const data = fs.readFileSync('dogs.json')
 const dogs = JSON.parse(data)
-/* [
-    {
-        "name":"Ninja",
-        "breed":"Shetland Sheepdog",
-        "age": 10
-    },
-    {
-        "name":"Casper",
-        "breed":"Chihuahua",
-        "age": 11
-    }
-] */
 
 function generateID(){
     return new Date().getUTCMilliseconds()
@@ -51,18 +39,11 @@ app.post('/dogs', (req, res) => {
         age: req.body.age
     }
 
-    
-    //THIS IS NOT WORKING (DIDN'T UPDATE JSON-file)
     fs.readFile('./dogs.json', 'utf8', () => {
-
-        console.log('hello!')
-        //dogs[dog] = JSON.parse(dogs)
-        //dogs[dog] = JSON.parse(req.body.dogs)
         dogs.push(dog)
         const data = JSON.stringify(dogs, null, 2)
         fs.writeFile('./dogs.json', data, 'utf8', () => {
-            console.log('went good')
-            
+            console.log('Dog added!')  
         })   
     })
 
@@ -79,14 +60,11 @@ app.put('/dogs/:id', (req, res) => {
     dog.name = req.body.name
     dog.breed = req.body.breed
     dog.age = req.body.age
-    
 
     fs.readFile('./dogs.json', 'utf8', () => {
-
-        console.log('hello Outbyto!')
         const data = JSON.stringify(dogs, null, 2)
         fs.writeFile('./dogs.json', data, 'utf8', () => {
-            console.log('went good to exchange')
+            console.log('Dog pupdated!')
         })   
     })
     res.send(dog)
@@ -103,7 +81,7 @@ app.delete('/dogs/:id', (req, res) => {
     dogs.splice(index, 1)
     const data = JSON.stringify(dogs, null, 2)
     fs.writeFile('./dogs.json', data, 'utf8', () => {
-        console.log('went good to delete')
+        console.log('Dog deleted!')
     }) 
     res.send(dog)
 })

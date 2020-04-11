@@ -2,7 +2,7 @@ GET http://localhost:5000/dogs
 
 ###
 
-GET http://localhost:5000/dogs/731
+GET http://localhost:5000/dogs/1
 
 ###
 
@@ -21,9 +21,9 @@ PUT http://localhost:5000/dogs/136
 Content-Type: application/json
 
 {
-    "name": "Oswald",
-    "breed": "Chihuahua",
-    "age": "10"
+    "name": "Furion",
+    "breed": "Corgi",
+    "age": "2"
 }
 
 ###
