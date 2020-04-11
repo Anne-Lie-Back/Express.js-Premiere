@@ -79,6 +79,16 @@ app.put('/dogs/:id', (req, res) => {
     dog.name = req.body.name
     dog.breed = req.body.breed
     dog.age = req.body.age
+    
+
+    fs.readFile('./dogs.json', 'utf8', () => {
+
+        console.log('hello Outbyto!')
+        const data = JSON.stringify(dogs, null, 2)
+        fs.writeFile('./dogs.json', data, 'utf8', () => {
+            console.log('went good to exchange')
+        })   
+    })
     res.send(dog)
 })
 
@@ -91,6 +101,10 @@ app.delete('/dogs/:id', (req, res) => {
 
     const index = dogs.indexOf(dog)
     dogs.splice(index, 1)
+    const data = JSON.stringify(dogs, null, 2)
+    fs.writeFile('./dogs.json', data, 'utf8', () => {
+        console.log('went good to delete')
+    }) 
     res.send(dog)
 })
 
