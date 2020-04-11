@@ -2,25 +2,29 @@ GET http://localhost:5000/dogs
 
 ###
 
+GET http://localhost:5000/dogs/1
+
+###
+
 POST http://localhost:5000/dogs
 Content-Type: application/json
 
 {
-    "name": "Merlin",
-    "breed":"Coton de tulear",
-    "age":"12"
+    "name": "Eros",
+    "breed":"Blandis",
+    "age":"14"
 }
 
 ###
 
-PUT http://localhost:5000/dogs/352
+PUT http://localhost:5000/dogs/136
 Content-Type: application/json
 
 {
-    "name": "Merlin",
-    "breed": "Coton de tulear",
-    "age": "15"
+    "name": "Furion",
+    "breed": "Corgi",
+    "age": "2"
 }
 
 ###
-DELETE http://localhost:5000/dogs/3
+DELETE http://localhost:5000/dogs/731

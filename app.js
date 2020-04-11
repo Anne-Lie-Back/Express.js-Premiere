@@ -1,34 +1,16 @@
 const express = require('express')
 const app = express()
+const fs = require('fs')
 
 app.use(express.json())
+app.use(express.static('public'))
 
-const dogs = [
-    {
-        id: 1,
-        name: 'Ninja',
-        breed: 'Shetland Sheepdog',
-        age: 10
-    },
-    {
-        id: 2,
-        name: 'Casper',
-        breed: 'Chihuahua',
-        age: 11
-    },
-    {
-        id: 3,
-        name: 'Eros',
-        breed: 'Blandis',
-        age: 14
-    },
-    {
-        id: 4,
-        name: 'Furion',
-        breed: 'Corgi',
-        age: 2
-    }
-] 
+const data = fs.readFileSync('dogs.json')
+const dogs = JSON.parse(data)
+
+function generateID(){
+    return new Date().getUTCMilliseconds()
+}
 
 // GET
 app.get('/dogs', (req, res) => {
@@ -44,15 +26,12 @@ app.get('/dogs/:id', (req, res) => {
     res.send(dog)
 })
 
-function generateID(){
-     return new Date().getUTCMilliseconds()
-}
-
 //POST
 app.post('/dogs', (req, res) => {
     if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
         return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
     }
+
     const dog = {
         id: generateID(),
         name: req.body.name,
@@ -60,7 +39,14 @@ app.post('/dogs', (req, res) => {
         age: req.body.age
     }
 
-    dogs.push(dog)
+    fs.readFile('./dogs.json', 'utf8', () => {
+        dogs.push(dog)
+        const data = JSON.stringify(dogs, null, 2)
+        fs.writeFile('./dogs.json', data, 'utf8', () => {
+            console.log('Dog added!')  
+        })   
+    })
+
     res.send(dog)
 })
 
@@ -74,6 +60,13 @@ app.put('/dogs/:id', (req, res) => {
     dog.name = req.body.name
     dog.breed = req.body.breed
     dog.age = req.body.age
+
+    fs.readFile('./dogs.json', 'utf8', () => {
+        const data = JSON.stringify(dogs, null, 2)
+        fs.writeFile('./dogs.json', data, 'utf8', () => {
+            console.log('Dog pupdated!')
+        })   
+    })
     res.send(dog)
 })
 
@@ -86,12 +79,14 @@ app.delete('/dogs/:id', (req, res) => {
 
     const index = dogs.indexOf(dog)
     dogs.splice(index, 1)
+    const data = JSON.stringify(dogs, null, 2)
+    fs.writeFile('./dogs.json', data, 'utf8', () => {
+        console.log('Dog deleted!')
+    }) 
     res.send(dog)
 })
 
 //WHERE TO LISTEN
-const port = 5000
-
-app.listen(port, () => {
-    console.log(`Listening to port ${port}`)
+app.listen(5000, () => {
+    console.log(`Listening to port 5000`)
 })
