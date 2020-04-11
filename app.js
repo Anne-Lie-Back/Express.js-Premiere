@@ -4,6 +4,7 @@ const fs = require('fs')
 
 app.use(express.json())
 app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
 
 const data = fs.readFileSync('dogs.json')
 const dogs = JSON.parse(data)
@@ -11,6 +12,13 @@ const dogs = JSON.parse(data)
 function generateID(){
     return new Date().getUTCMilliseconds()
 }
+
+/* app.post('/submit-form', (req, res) =>{
+    const name = req.body.name
+    const breed = req.body.breed
+    const age = req.body.age
+    res.end()
+}) */
 
 // GET
 app.get('/dogs', (req, res) => {
@@ -27,7 +35,7 @@ app.get('/dogs/:id', (req, res) => {
 })
 
 //POST
-app.post('/dogs', (req, res) => {
+app.post('/submit-form', (req, res) => {
     if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
         return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
     }

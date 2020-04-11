@@ -22,5 +22,11 @@
     "name": "Eros",
     "breed": "Blandis",
     "age": "14"
+  },
+  {
+    "id": 722,
+    "name": "Hugo",
+    "breed": "Shit tzu",
+    "age": "2"
   }
 ]
