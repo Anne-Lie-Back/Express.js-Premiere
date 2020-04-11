@@ -1,9 +1,17 @@
+window.addEventListener('load', init);
 
-fetch("http://localhost:5000/dogs").then((response) => {
-    return response.json()
-}).then((dogs) => {
-    printAllDogs(dogs)
-})
+function init(){
+    fetchAPI()
+}
+
+function fetchAPI(){
+    fetch("http://localhost:5000/dogs").then((response) => {
+        return response.json()
+    }).then((dogs) => {
+        printAllDogs(dogs)
+    })
+}
+
 
 function printAllDogs(dogs){
     let container = document.getElementById('listOfDogs')
@@ -18,8 +26,10 @@ function printAllDogs(dogs){
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
         deleteButton.addEventListener('click',() => {
-            fetch(`/dogs/${dog.id}`, {method: 'DELETE'})
+            fetch(`/dogs/${dog.id}`, {method: 'DELETE'}, updateList())
         });
+
+        
 
         let dogListItem = document.createElement('li')
         dogListItem.appendChild(dogName)
@@ -31,10 +41,11 @@ function printAllDogs(dogs){
     })
 }
 
-/* function updateList(){
+ function updateList(event){
+     console.log('PUPDATE PLS!')
     const ul = document.querySelector('ul')
     while( ul.firstChild ){
         ul.removeChild(ul.firstChild );
     }
-    printAllDogs()
-} */
+    fetchAPI()
+} 

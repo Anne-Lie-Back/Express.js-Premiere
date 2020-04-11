@@ -10,5 +10,17 @@
     "name": "Eros",
     "breed": "Blandis",
     "age": "14"
+  },
+  {
+    "id": 246,
+    "name": "Casper",
+    "breed": "Chihuahua",
+    "age": "11"
+  },
+  {
+    "id": 882,
+    "name": "Merlin",
+    "breed": "Coton",
+    "age": "15"
   }
 ]
