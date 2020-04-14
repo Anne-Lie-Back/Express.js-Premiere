@@ -60,7 +60,6 @@ app.post('/dogs', (req, res) => {
 
 //PUT
 app.put('/dogs/:id', (req, res) => {
-    console.log(req.body)
     const dog = dogs.find(d => d.id == parseInt(req.params.id))
     if(!dog){
         return res.status(404).send('Can not find dog with this ID')
@@ -86,7 +85,6 @@ app.delete('/dogs/:id', (req, res) => {
     if(!dog){
         return res.status(404).send('The specific doggo was not found')
     }
-
     const index = dogs.indexOf(dog)
     dogs.splice(index, 1)
     const data = JSON.stringify(dogs, null, 2)
