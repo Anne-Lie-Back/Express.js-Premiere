@@ -8,12 +8,13 @@
 </head>
 <body>
     <h1>Please register your dog</h1>
-    <form method="POST" action="/submit-form">
-        <input type="text" name="name">
-        <input type="text" name="breed">
-        <input type="number" name="age">
+    <form method="POST" action="/dogs">
+        <input type="text" name="name" placeholder ="Name">
+        <input type="text" name="breed" placeholder ="Breed">
+        <input type="number" name="age" placeholder ="Age">
         <input type="submit" value="submit">
     </form>
+    <form id="editForm"></form>
     <ul id="listOfDogs"></ul>
 </body>
 </html>

@@ -35,7 +35,7 @@ app.get('/dogs/:id', (req, res) => {
 })
 
 //POST
-app.post('/submit-form', (req, res) => {
+app.post('/dogs', (req, res) => {
     if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
         return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
     }
@@ -55,11 +55,12 @@ app.post('/submit-form', (req, res) => {
         })   
     })
 
-    res.send(dog)
+    res.redirect('/').send(dog)
 })
 
 //PUT
 app.put('/dogs/:id', (req, res) => {
+    console.log(req.body)
     const dog = dogs.find(d => d.id == parseInt(req.params.id))
     if(!dog){
         return res.status(404).send('Can not find dog with this ID')
