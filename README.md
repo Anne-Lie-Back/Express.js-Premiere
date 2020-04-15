@@ -8,7 +8,7 @@ You can test the rest api in my project through the .rest-file in VSCode, or you
 
 Other features I would have liked but is not there for this version: 
 - hitting enter to submit for all input-field-sections 
-- search-ID-div: When specific dog is active and updated it should be live-updated in the search-ID-div as well. Right now it updates in the dog-list (and in dogs.json) but not in the "search specific dog"-div...very confusing for a user. Not good!
+- search-ID-div: When specific dog is active in search-div, and updated with the PUPDATE-button in search-div, the dog's info should be live-updated in the search-ID-div as well. Right now a pupdate through the search-div updates the dog's info in the dog-list-div (and in dogs.json) but not in the "search specific dog"-div...very confusing for a user. Not good!
 
 
 Repo: **https://github.com/Anne-Lie-Back/Express.js-Premiere**
