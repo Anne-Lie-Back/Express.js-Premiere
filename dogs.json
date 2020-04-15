@@ -9,18 +9,12 @@
     "id": 115,
     "name": "Eros",
     "breed": "blandis",
-    "age": "13"
+    "age": "15"
   },
   {
     "id": 963,
     "name": "Casper",
     "breed": "Chihuahua",
     "age": "15"
-  },
-  {
-    "id": 956,
-    "name": "Lars",
-    "breed": "Shit tzu",
-    "age": "13"
   }
 ]

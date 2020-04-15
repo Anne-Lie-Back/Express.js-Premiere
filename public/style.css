@@ -152,3 +152,60 @@ input{
     align-items: center;
     justify-content: center;
 }
+
+@media only screen and (max-width: 1350px){
+    .searchDiv{
+        height: 90%
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    .gridContainer{
+        padding:0rem;
+        grid-template-columns: auto;
+        grid-template-rows: auto 15rem auto;
+        grid-template-areas: 
+        "registerDiv"
+        "searchDiv"
+        "listDiv";
+    }
+
+    .container{
+        padding: 1rem 1.5rem;
+        margin: 1rem 1rem;
+    }
+
+    .searchDiv{
+        height: 90%
+    }
+}
+
+@media only screen and (max-width: 555px){
+    h1{
+        font-size: 1.1rem;
+        margin: 0.5rem 0
+    }
+    h2{
+        font-size: 1rem;
+    }
+    h4{
+        font-size: 0.8rem;
+        margin: 0 0.5rem 0.1rem 0
+    }
+    p{
+        font-size: 0.8rem;
+        
+    }
+
+    button{
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+        margin: 0.5rem 0.5rem 0 0.2rem
+    }
+     .gridContainer{
+        grid-template-rows: auto;
+    }
+    .container{
+        margin: 0.5rem
+    }
+}
