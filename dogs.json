@@ -1,20 +1,26 @@
 [
   {
-    "id": 882,
-    "name": "Merlin",
-    "breed": "Coton",
-    "age": "9"
+    "id": 1,
+    "name": "Ninja",
+    "breed": "Shetland Sheepdog",
+    "age": "10"
   },
   {
-    "id": 271,
+    "id": 70,
+    "name": "Furion",
+    "breed": "corgi",
+    "age": "2"
+  },
+  {
+    "id": 466,
+    "name": "Casper",
+    "breed": "Chihuahua",
+    "age": "11"
+  },
+  {
+    "id": 5,
     "name": "Eros",
     "breed": "blandis",
-    "age": "7"
-  },
-  {
-    "id": 986,
-    "name": "Ninja",
-    "breed": "Sheltie",
-    "age": "10"
+    "age": "15"
   }
 ]

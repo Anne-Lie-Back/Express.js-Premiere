@@ -13,19 +13,12 @@ function generateID(){
     return new Date().getUTCMilliseconds()
 }
 
-/* app.post('/submit-form', (req, res) =>{
-    const name = req.body.name
-    const breed = req.body.breed
-    const age = req.body.age
-    res.end()
-}) */
-
 // GET
-app.get('/dogs', (req, res) => {
+app.get('/api/dogs', (req, res) => {
     res.send(dogs)
 })
 
-app.get('/dogs/:id', (req, res) => {
+app.get('/api/dogs/:id', (req, res) => {
     const dog = dogs.find( d => d.id === parseInt(req.params.id))
 
     if(!dog){
@@ -35,7 +28,7 @@ app.get('/dogs/:id', (req, res) => {
 })
 
 //POST
-app.post('/dogs', (req, res) => {
+app.post('/api/dogs', (req, res) => {
     if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
         return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
     }
@@ -59,7 +52,7 @@ app.post('/dogs', (req, res) => {
 })
 
 //PUT
-app.put('/dogs/:id', (req, res) => {
+app.put('/api/dogs/:id', (req, res) => {
     const dog = dogs.find(d => d.id == parseInt(req.params.id))
     if(!dog){
         return res.status(404).send('Can not find dog with this ID')
@@ -80,7 +73,7 @@ app.put('/dogs/:id', (req, res) => {
 
 //DELETE
 
-app.delete('/dogs/:id', (req, res) => {
+app.delete('/api/dogs/:id', (req, res) => {
     const dog = dogs.find( d => d.id === parseInt(req.params.id))
     if(!dog){
         return res.status(404).send('The specific doggo was not found')
