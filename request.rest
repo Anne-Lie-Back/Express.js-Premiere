@@ -10,21 +10,21 @@ POST http://localhost:5000/dogs
 Content-Type: application/json
 
 {
-    "name": "Eros",
-    "breed":"Blandis",
-    "age":"14"
+    "name": "Scooby",
+    "breed":"Grand Danois",
+    "age":"5"
 }
 
 ###
 
-PUT http://localhost:5000/dogs/136
+PUT http://localhost:5000/dogs/1
 Content-Type: application/json
 
 {
-    "name": "Furion",
-    "breed": "Corgi",
-    "age": "2"
+    "name": "Ninja",
+    "breed": "Sheltie",
+    "age": "5"
 }
 
 ###
-DELETE http://localhost:5000/dogs/731
+DELETE http://localhost:5000/dogs/5
