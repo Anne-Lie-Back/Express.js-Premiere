@@ -15,11 +15,13 @@ FIRST:
 
 npm install
 
+
 THEN:
 
 for live-update (recommended):
 
 nodemon app.js
+
 
 else:
 
