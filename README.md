@@ -23,5 +23,4 @@ for live-update (recommended):
 
 
 else:
-
 **node app.js**
