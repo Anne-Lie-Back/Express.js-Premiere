@@ -5,7 +5,7 @@
 }
 
 html {
-    background: url("./images/dogBg.jpg") no-repeat center center fixed;
+    background: url("./images/dogBg2.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -22,17 +22,33 @@ body {
     overflow: hidden;
 }
 
-h1, h3{
+h1{
     font-weight: 700;
     margin-bottom: 1rem;
 }
-
-h5{
-    font-weight: 500;
-    margin-bottom: 0.5rem
+h2{
+    font-weight: 700;
 }
 
+h4{
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0 0.5rem 0.2rem 0
+}
 
+p{
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    margin-left: 0.3rem
+}
+
+.idNameWrapper{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    margin-left: 0.3rem
+}
 
 
 .gridContainer{
@@ -69,15 +85,16 @@ h5{
 
 .searchDiv{
     grid-area: searchDiv;
-    height:50%;
+    height:55%;
+    overflow-y: auto;
 }
 
 .container{
     background-color: #FFFFFF50;
     border-radius: 1rem;
     box-shadow: 0 0 1rem black;
-    padding: 2rem;
-    margin: 2rem;
+    padding: 2rem 3.5rem;
+    margin: 2rem 3rem;
 }
 
 .denseContainer{
@@ -92,21 +109,23 @@ li{
     border-radius: 1rem;
     /* box-shadow: 0 0 5px black; */
     margin: 1rem 0;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 3rem;
 }
 
 button{
     background-color: hotpink;
     border: 1px solid black;
     border-radius: 0.5rem;
-    box-shadow: 0 0 2px black;
+    box-shadow: 0 0 3px black;
     padding: 0.5rem 1rem;
-    margin: 0.5rem;
+    margin: 0.7rem 2rem 0.5rem 0;
     outline: none;
 }
 
 button:hover{
     cursor: pointer;
+    background-color: rgb(253, 163, 208);
+    box-shadow: 0 0 10px black;
 }
 
 input{

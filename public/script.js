@@ -14,21 +14,27 @@ function fetchAPI(){
     })
 }
 
+/************* All dogs-list ***************/
+
 function printAllDogs(dogs){
     let container = document.getElementById('listOfDogs')
 
     dogs.forEach(dog => {
-        let dogName = document.createElement('h3')
+        let idNameWrapper = document.createElement('div')
+        idNameWrapper.setAttribute('class', 'idNameWrapper')
+
+        let dogName = document.createElement('h2')
         dogName.innerText = dog.name
 
-        let dogID = document.createElement('h5')
+        let dogID = document.createElement('h4')
+        dogID.setAttribute('class', 'inlineH2')
         dogID.innerText = `Id: ${dog.id}`
 
-        let dogBreed = document.createElement('h5')
+        let dogBreed = document.createElement('p')
         dogBreed.innerText = dog.breed
 
-        let dogAge = document.createElement('h5')
-        dogAge.innerText = `Ålder: ${dog.age}år`
+        let dogAge = document.createElement('p')
+        dogAge.innerText = `Human years: ${dog.age}`
 
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
@@ -43,8 +49,10 @@ function printAllDogs(dogs){
 
         let dogListItem = document.createElement('li')
         dogListItem.setAttribute('id', 'dogListItem')
-        dogListItem.appendChild(dogName)
-        dogListItem.appendChild(dogID)
+
+        idNameWrapper.appendChild(dogID)
+        idNameWrapper.appendChild(dogName)
+        dogListItem.appendChild(idNameWrapper)
         dogListItem.appendChild(dogBreed)
         dogListItem.appendChild(dogAge)
         dogListItem.appendChild(deleteButton)
@@ -52,6 +60,8 @@ function printAllDogs(dogs){
         container.appendChild(dogListItem)
     })
 }
+
+/******************** EDIT DOG FUNCTIONS *****************/
 
 function showEditForm(dog){
 
@@ -130,6 +140,8 @@ function sendUpdate(dog, updateName, updateBreed, updateAge){
     updateList()
 }
 
+/******************** SPECIFIC DOG BY ID - FUNCTIONS *****************/
+
 function showSpecificDogById(){
     const id = document.getElementById('idInput').value
     fetch(`http://localhost:5000/api/dogs/${id}`). then((response) => {
@@ -147,18 +159,21 @@ function printSpecificDog(dog){
     const specUserCont = document.getElementById('showSpecDog')
     specUserCont.innerHTML = ""
     if(dog){
-        let dogName = document.createElement('h3')
+        let idNameWrapper = document.createElement('div')
+        idNameWrapper.setAttribute('class', 'idNameWrapper')
+
+        let dogName = document.createElement('h2')
         dogName.innerText = dog.name
-        let dogID = document.createElement('h5')
+        let dogID = document.createElement('h4')
         dogID.innerText = `Id: ${dog.id}`
-        let dogBreed = document.createElement('h5')
+        let dogBreed = document.createElement('p')
         dogBreed.innerText = dog.breed
-        let dogAge = document.createElement('h5')
-        dogAge.innerText = `Ålder: ${dog.age}år`
+        let dogAge = document.createElement('p')
+        dogAge.innerText = `Human years: ${dog.age}`
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
         deleteButton.addEventListener('click',() => {
-            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, updateList())
+            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, updateList(), specUserCont.innerHTML="")
         });
 
         let updateButton = document.createElement('button')
@@ -167,8 +182,11 @@ function printSpecificDog(dog){
 
         let dogListItem = document.createElement('li')
         dogListItem.setAttribute('id', 'dogListItem')
-        dogListItem.appendChild(dogName)
-        dogListItem.appendChild(dogID)
+
+        idNameWrapper.appendChild(dogID)
+        idNameWrapper.appendChild(dogName)
+       
+        dogListItem.appendChild(idNameWrapper)
         dogListItem.appendChild(dogBreed)
         dogListItem.appendChild(dogAge)
         dogListItem.appendChild(deleteButton)
@@ -180,6 +198,8 @@ function printSpecificDog(dog){
         specUserCont.appendChild(errorResponse)
     }
 }
+
+/***************** Keeps list in DOM up to date ******************/
 
 function updateList(){
      console.log('PUPDATE PLS!')

@@ -13,15 +13,15 @@
         <div class = "container registerDiv">
             <h1>Please register your dog</h1>
             <form method="POST" action="/api/dogs">
-                <input type="text" name="name" placeholder ="Name">
-                <input type="text" name="breed" placeholder ="Breed">
-                <input type="number" name="age" placeholder ="Age">
-                <input type="submit" value="submit">
+                <input type="text" name="name" placeholder ="Name" required>
+                <input type="text" name="breed" placeholder ="Breed" required>
+                <input type="number" name="age" placeholder ="Age" required>
+                <button type="submit" value="submit">Submit</button>
             </form>
         </div>
         <div class="container searchDiv">
             <input id = "idInput" type ="number" placeholder = "id">
-            <button id = "idSearch">Search!</button>
+            <button id = "idSearch">Search by ID!</button>
             <div id ="showSpecDog"></div>
         </div>
         <div class="container listDiv">
