@@ -18,7 +18,9 @@ npm install
 THEN:
 
 for live-update (recommended):
+
 nodemon app.js
 
 else:
+
 node app.js
