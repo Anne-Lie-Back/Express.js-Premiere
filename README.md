@@ -1,5 +1,5 @@
 # Express.js-Premiere
-My first encounter with express.js. A small school project for practicing very basic back-end. REST API with GET/POST/PUT/DELETE methods.
+My first encounter with express.js. A small school project for practicing very basic back-end in Node.js and Express. A REST API with GET/POST/PUT/DELETE methods (CRUD) and a total of 5 endpoints.
 
 ## Register your dog!
 My rest api can store dogs in a json-file; you can add dogs, delete dogs (sadness), change dogs (although all dogs are perfect) and ID-search for a special dog.
@@ -9,6 +9,9 @@ You can test the rest api in my project through the .rest-file in VSCode, or you
 Other features I would have liked but is not there for this version: 
 - hitting enter to submit for all input-field-sections 
 - search-ID-div: When specific dog is active and updated it should be live-updated in the search-ID-div as well.
+
+
+Repo: **https://github.com/Anne-Lie-Back/Express.js-Premiere**
 
 ## How to run project
 
