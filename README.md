@@ -11,11 +11,11 @@ Other features I would have liked but is not there for this version:
 - search-ID-div: When specific dog is active and updated it should be live-updated in the search-ID-div as well.
 
 ## How to run project
-#first:
+FIRST:
 
 npm install
 
-#then:
+THEN:
 
 for live-update (recommended):
 nodemon app.js
