@@ -37,8 +37,8 @@ function printAllDogs(dogs){
         });
 
         let updateButton = document.createElement('button')
-        updateButton.innerText = 'UPDATE'
-        updateButton.addEventListener('click', () => {appendEditForm(dog)})
+        updateButton.innerText = 'PUPDATE'
+        updateButton.addEventListener('click', () => {showEditForm(dog)},)
             
 
         let dogListItem = document.createElement('li')
@@ -53,7 +53,19 @@ function printAllDogs(dogs){
     })
 }
 
-function appendEditForm(dog){
+function showEditForm(dog){
+
+    const backgroundDiv = document.createElement('div')
+    backgroundDiv.addEventListener('click', () => {
+        removeEditDiv(backgroundDiv)
+    })
+    backgroundDiv.setAttribute('id', 'clickBackground')
+
+    const editFormContainer = document.createElement('div')
+    editFormContainer.setAttribute('class','container denseContainer')
+    editFormContainer.addEventListener('click', (event) => {
+        event.stopPropagation()
+    })
 
     let updateName = document.createElement('input')
     updateName.type = "text"
@@ -77,17 +89,28 @@ function appendEditForm(dog){
     submitUpdateButton.type = "button"
     submitUpdateButton.value = "yes, PUPDATE!"
     submitUpdateButton.addEventListener('click', () => {
-        sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm)
+        sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm), 
+        removeEditDiv(backgroundDiv)
     });
         
-    const divEditForm = document.getElementById('editForm')
+    const divEditForm = document.createElement('div')
     divEditForm.appendChild(updateName)
     divEditForm.appendChild(updateBreed)
     divEditForm.appendChild(updateAge)
     divEditForm.appendChild(submitUpdateButton)
+
+    editFormContainer.appendChild(divEditForm)
+    backgroundDiv.appendChild(editFormContainer)
+    
+    document.querySelector('body').appendChild(backgroundDiv)
 }
 
-function sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm){
+function removeEditDiv(backgroundDiv){
+    backgroundDiv.parentNode.removeChild(backgroundDiv)
+    console.log('removed!')
+}
+
+function sendUpdate(dog, updateName, updateBreed, updateAge){
     let data = {
         "name": updateName.value,
         "breed": updateBreed.value,
@@ -103,10 +126,6 @@ function sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm){
     .then(response => response.json())
     .catch(error => console.error('Error:', error))
     .then(response => console.log('Success:', JSON.stringify(response)))
-
-    while( divEditForm.firstChild ){
-        divEditForm.removeChild(divEditForm.firstChild );
-    }
 
     updateList()
 }
@@ -144,7 +163,7 @@ function printSpecificDog(dog){
 
         let updateButton = document.createElement('button')
         updateButton.innerText = 'UPDATE'
-        updateButton.addEventListener('click', () => {appendEditForm(dog)})
+        updateButton.addEventListener('click', () => {showEditForm(dog)})
 
         let dogListItem = document.createElement('li')
         dogListItem.setAttribute('id', 'dogListItem')

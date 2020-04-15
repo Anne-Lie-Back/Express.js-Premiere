@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: url("./images/dogBg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+
+}
+
+body {
+    background: #FFFFFF20;
+    background-size: cover;
+    font-family: 'Comfortaa', cursive;
+    position:relative;
+    overflow: hidden;
+}
+
+h1, h3{
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h5{
+    font-weight: 500;
+    margin-bottom: 0.5rem
+}
+
+
+
+
+.gridContainer{
+    width: 100%;
+    height: 100vh;
+    padding: 1% 3rem;
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas:
+    "registerDiv registerDiv"
+    "listDiv searchDiv";
+}
+
+.registerDiv{
+    grid-area: registerDiv;
+}
+
+.listDiv{
+    grid-area: listDiv;
+    height: 90%;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar { 
+    -webkit-appearance: none;
+    width: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgb(0,0,0);
+}
+
+.searchDiv{
+    grid-area: searchDiv;
+    height:50%;
+}
+
+.container{
+    background-color: #FFFFFF50;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem black;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.denseContainer{
+    background-color: #FFFFFF90
+}
+
+
+
+li{
+    list-style-type: none;
+    background-color: #FFFFFF90;
+    border-radius: 1rem;
+    /* box-shadow: 0 0 5px black; */
+    margin: 1rem 0;
+    padding: 1.5rem 1rem;
+}
+
+button{
+    background-color: hotpink;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 2px black;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    outline: none;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+input{
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 1rem 0.5rem 0;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 2px black;
+}
+
+.hidden{
+    display: none;
+}
+
+#clickBackground{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000090;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
