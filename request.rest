@@ -1,23 +1,23 @@
-GET http://localhost:5000/dogs
+GET http://localhost:5000/api/dogs
 
 ###
 
-GET http://localhost:5000/dogs/1
+GET http://localhost:5000/api/dogs/1
 
 ###
 
-POST http://localhost:5000/dogs
+POST http://localhost:5000/api/dogs
 Content-Type: application/json
 
 {
-    "name": "Scooby",
+    "name": "Tommy",
     "breed":"Grand Danois",
     "age":"5"
 }
 
 ###
 
-PUT http://localhost:5000/dogs/1
+PUT http://localhost:5000/api/dogs/1
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/dogs/5
+DELETE http://localhost:5000/api/dogs/5

@@ -1,20 +1,32 @@
 [
   {
-    "id": 418,
-    "name": "Ninja",
-    "breed": "Sheltie",
-    "age": "10"
-  },
-  {
-    "id": 115,
-    "name": "Eros",
-    "breed": "blandis",
+    "id": 278,
+    "name": "Tuva",
+    "breed": "Coton",
     "age": "15"
   },
   {
-    "id": 963,
+    "id": 364,
+    "name": "Tuva",
+    "breed": "Blandis",
+    "age": "3"
+  },
+  {
+    "id": 345,
+    "name": "Linus",
+    "breed": "blandis",
+    "age": "2"
+  },
+  {
+    "id": 857,
+    "name": "Lars",
+    "breed": "Blandis",
+    "age": "2"
+  },
+  {
+    "id": 942,
     "name": "Casper",
     "breed": "Chihuahua",
-    "age": "15"
+    "age": "1"
   }
 ]

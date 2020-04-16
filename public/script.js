@@ -1,12 +1,14 @@
 window.addEventListener('load', init);
 
 function init(){
-    fetchAPI()
+    fetchAllDogs()
     const searchButton = document.getElementById('idSearch')
     searchButton.addEventListener('click', showSpecificDogById)
+    const submitButton = document.getElementById('submitButton')
+    submitButton.addEventListener('click', () => {addDogFromForm(event)})
 }
 
-function fetchAPI(){
+function fetchAllDogs(){
     fetch("http://localhost:5000/api/dogs").then((response) => {
         return response.json()
     }).then((dogs) => {
@@ -18,6 +20,7 @@ function fetchAPI(){
 
 function printAllDogs(dogs){
     let container = document.getElementById('listOfDogs')
+    container.innerHTML = ""
 
     dogs.forEach(dog => {
         let idNameWrapper = document.createElement('div')
@@ -39,7 +42,7 @@ function printAllDogs(dogs){
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
         deleteButton.addEventListener('click',() => { 
-            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, updateList())
+            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, fetchAllDogs())
         });
 
         let updateButton = document.createElement('button')
@@ -59,6 +62,55 @@ function printAllDogs(dogs){
         dogListItem.appendChild(updateButton)
         container.appendChild(dogListItem)
     })
+}
+
+/**ADD DOGS**/
+
+function addDogFromForm(event){
+    event.preventDefault()
+    let inputName = document.getElementById('inputName')
+    let inputBreed = document.getElementById('inputBreed')
+    let inputAge = document.getElementById('inputAge')
+
+    let data = {
+        "name": inputName.value,
+        "breed": inputBreed.value,
+        "age": inputAge.value
+    }
+
+    if((inputName.value === "")||(inputBreed.value === "")||(inputAge.value === "")){
+        if(inputName.value === ""){
+            inputName.placeholder = 'DOGGO NEEDS NAME!'
+        }
+        if (inputBreed.value === ""){
+            inputBreed.value = 'Blandis'
+        }
+        if (inputAge.value === ""){
+            inputAge.placeholder = 'DOGGOS AGE PLS?'
+        }
+        }
+    else{
+        fetch(`http://localhost:5000/api/dogs/`,{
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(data)
+        }, fetchAllDogs())
+        .then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', JSON.stringify(response)))
+    
+        fetchAllDogs()
+
+        inputName.value = ''
+        inputName.placeholder= 'Name'
+        inputBreed.value = ''
+        inputBreed.placeholder ='Breed'
+        inputAge.value = ''
+        inputAge.placeholder = 'Age'
+
+    }
 }
 
 /******************** EDIT DOG FUNCTIONS *****************/
@@ -137,7 +189,7 @@ function sendUpdate(dog, updateName, updateBreed, updateAge){
     .catch(error => console.error('Error:', error))
     .then(response => console.log('Success:', JSON.stringify(response)))
 
-    updateList()
+   fetchAllDogs()
 }
 
 /******************** SPECIFIC DOG BY ID - FUNCTIONS *****************/
@@ -173,11 +225,11 @@ function printSpecificDog(dog){
         let deleteButton = document.createElement('button')
         deleteButton.innerText = 'Delete'
         deleteButton.addEventListener('click',() => {
-            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, updateList(), specUserCont.innerHTML="")
+            fetch(`/api/dogs/${dog.id}`, {method: 'DELETE'}, fetchAllDogs(), specUserCont.innerHTML="")
         });
 
         let updateButton = document.createElement('button')
-        updateButton.innerText = 'UPDATE'
+        updateButton.innerText = 'PUPDATE'
         updateButton.addEventListener('click', () => {showEditForm(dog)})
 
         let dogListItem = document.createElement('li')
@@ -201,11 +253,11 @@ function printSpecificDog(dog){
 
 /***************** Keeps list in DOM up to date ******************/
 
-function updateList(){
-     console.log('PUPDATE PLS!')
+/* function updateList(){
+     console.log('THIS SHOULD HAPPEN!')
     const ul = document.querySelector('ul')
     while( ul.firstChild ){
         ul.removeChild(ul.firstChild );
     }
-    fetchAPI()
-} 
+    fetchAllDogs()
+}  */

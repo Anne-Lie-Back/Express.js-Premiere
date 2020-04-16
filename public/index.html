@@ -12,11 +12,11 @@
     <div class="gridContainer">
         <div class = "container registerDiv">
             <h1>Please register your dog</h1>
-            <form method="POST" action="/api/dogs">
-                <input type="text" name="name" placeholder ="Name" required>
-                <input type="text" name="breed" placeholder ="Breed" required>
-                <input type="number" name="age" placeholder ="Age" required>
-                <button type="submit" value="submit">Submit</button>
+            <form>
+                <input type="text" name="name" placeholder ="Name" required id = "inputName">
+                <input type="text" name="breed" placeholder ="Breed" required id = "inputBreed">
+                <input type="number" name="age" placeholder ="Age" required id = "inputAge">
+                <button id="submitButton">Submit</button>
             </form>
         </div>
         <div class="container searchDiv">

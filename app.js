@@ -48,7 +48,7 @@ app.post('/api/dogs', (req, res) => {
         })   
     })
 
-    res.redirect('/').send(dog)
+    res.send(dog)
 })
 
 //PUT
