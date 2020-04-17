@@ -2,7 +2,7 @@ GET http://localhost:5000/api/dogs
 
 ###
 
-GET http://localhost:5000/api/dogs/1
+GET http://localhost:5000/api/dogs/345
 
 ###
 
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/api/dogs/1
+PUT http://localhost:5000/api/dogs/864
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/api/dogs/5
+DELETE http://localhost:5000/api/dogs/864

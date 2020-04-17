@@ -49,7 +49,6 @@ function printAllDogs(dogs){
         updateButton.innerText = 'PUPDATE'
         updateButton.addEventListener('click', () => {showEditForm(dog)},)
             
-
         let dogListItem = document.createElement('li')
         dogListItem.setAttribute('id', 'dogListItem')
 
@@ -64,7 +63,7 @@ function printAllDogs(dogs){
     })
 }
 
-/**ADD DOGS**/
+/****************************ADD DOGS*********************/
 
 function addDogFromForm(event){
     event.preventDefault()
@@ -88,7 +87,7 @@ function addDogFromForm(event){
         if (inputAge.value === ""){
             inputAge.placeholder = 'DOGGOS AGE PLS?'
         }
-        }
+    }
     else{
         fetch(`http://localhost:5000/api/dogs/`,{
             method: 'POST',
@@ -100,7 +99,7 @@ function addDogFromForm(event){
         .then(response => response.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', JSON.stringify(response)))
-    
+        
         fetchAllDogs()
 
         inputName.value = ''
@@ -109,7 +108,6 @@ function addDogFromForm(event){
         inputBreed.placeholder ='Breed'
         inputAge.value = ''
         inputAge.placeholder = 'Age'
-
     }
 }
 
@@ -118,6 +116,7 @@ function addDogFromForm(event){
 function showEditForm(dog){
 
     const backgroundDiv = document.createElement('div')
+    backgroundDiv.setAttribute('id', 'background')
     backgroundDiv.addEventListener('click', () => {
         removeEditDiv(backgroundDiv)
     })
@@ -147,13 +146,13 @@ function showEditForm(dog){
     updateAge.value = dog.age
     updateAge.placeholder = "Age"
 
-    let submitUpdateButton = document.createElement('input')
-    submitUpdateButton.type = "button"
-    submitUpdateButton.value = "yes, PUPDATE!"
+    let submitUpdateButton = document.createElement('button')
+    //submitUpdateButton.type = "button"
+    submitUpdateButton.innerText = "yes, PUPDATE!"
     submitUpdateButton.addEventListener('click', () => {
-        sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm), 
-        removeEditDiv(backgroundDiv)
+        sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm)
     });
+
         
     const divEditForm = document.createElement('div')
     divEditForm.appendChild(updateName)
@@ -178,18 +177,34 @@ function sendUpdate(dog, updateName, updateBreed, updateAge){
         "breed": updateBreed.value,
         "age": updateAge.value
     }
-    fetch(`http://localhost:5000/api/dogs/${dog.id}`,{
-        method: 'PUT',
-        headers: {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', JSON.stringify(response)))
 
-   fetchAllDogs()
+    if((updateName.value === "")||(updateBreed.value === "")||(updateAge.value === "")){
+        if(updateName.value === ""){
+            updateName.placeholder = 'DOGGO NEEDS NAME!'
+        }
+        if (updateBreed.value === ""){
+            updateBreed.value = 'Blandis'
+        }
+        if (updateAge.value === ""){
+            updateAge.placeholder = 'DOGGOS AGE PLS?'
+        }
+    }
+    else {
+        fetch(`http://localhost:5000/api/dogs/${dog.id}`,{
+            method: 'PUT',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', JSON.stringify(response)))
+        
+        backgroundDiv = document.getElementById('clickBackground')
+        removeEditDiv(backgroundDiv)
+        fetchAllDogs()
+    }
 }
 
 /******************** SPECIFIC DOG BY ID - FUNCTIONS *****************/
@@ -232,6 +247,10 @@ function printSpecificDog(dog){
         updateButton.innerText = 'PUPDATE'
         updateButton.addEventListener('click', () => {showEditForm(dog)})
 
+        let closeButton = document.createElement('button')
+        closeButton.innerText = 'Put away'
+        closeButton.addEventListener('click', () => {specUserCont.innerHTML=""})
+
         let dogListItem = document.createElement('li')
         dogListItem.setAttribute('id', 'dogListItem')
 
@@ -243,21 +262,11 @@ function printSpecificDog(dog){
         dogListItem.appendChild(dogAge)
         dogListItem.appendChild(deleteButton)
         dogListItem.appendChild(updateButton)
+        dogListItem.appendChild(closeButton)
         specUserCont.appendChild(dogListItem)
     }else{
-        const errorResponse = document.createElement('h1')
+        const errorResponse = document.createElement('h2')
         errorResponse.innerText = 'NO DOGGO FOUND'
         specUserCont.appendChild(errorResponse)
     }
 }
-
-/***************** Keeps list in DOM up to date ******************/
-
-/* function updateList(){
-     console.log('THIS SHOULD HAPPEN!')
-    const ul = document.querySelector('ul')
-    while( ul.firstChild ){
-        ul.removeChild(ul.firstChild );
-    }
-    fetchAllDogs()
-}  */
