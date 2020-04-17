@@ -5,19 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doggo care!</title>
     <script defer src="./script.js"></script>
+    <script defer src="./addDog.js"></script>
+    <script defer src="./idSearch.js"></script>
+    <script defer src="./editDog.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Please register your dog</h1>
-    <form method="POST" action="/api/dogs">
-        <input type="text" name="name" placeholder ="Name">
-        <input type="text" name="breed" placeholder ="Breed">
-        <input type="number" name="age" placeholder ="Age">
-        <input type="submit" value="submit">
-    </form>
-    <input id = "idInput" type ="number" placeholder = "id">
-    <button id = "idSearch">Search!</button>
-    <div id ="showSpecDog"></div>
-    <form id="editForm"></form>
-    <ul id="listOfDogs"></ul>
+    <div class="gridContainer">
+        <div class = "container registerDiv">
+            <h1>Please register your dog</h1>
+            <form>
+                <input type="text" name="name" placeholder ="Name" required id = "inputName">
+                <input type="text" name="breed" placeholder ="Breed" required id = "inputBreed">
+                <input type="number" name="age" placeholder ="Age" required id = "inputAge">
+                <button id="submitButton">Submit</button>
+            </form>
+        </div>
+        <div class="container searchDiv">
+            <input id = "idInput" type ="number" placeholder = "id">
+            <button id = "idSearch">Search by ID!</button>
+            <div id ="showSpecDog"></div>
+        </div>
+        <div class="container listDiv">
+            <form id="editForm"></form>
+            <ul id="listOfDogs"></ul>
+        </div>
+    </div>
 </body>
 </html>
