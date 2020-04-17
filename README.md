@@ -27,3 +27,6 @@ for live-update (recommended):
 
 else:
 **node app.js**
+
+
+You should now see it at: **http://localhost:5000**
