@@ -8,8 +8,8 @@
   {
     "id": 115,
     "name": "Eros",
-    "breed": "blandis",
-    "age": "12"
+    "breed": "Maltes/Bolognese",
+    "age": "5"
   },
   {
     "id": 455,
@@ -19,8 +19,14 @@
   },
   {
     "id": 745,
-    "name": "Linus",
-    "breed": "Schäfer",
+    "name": "Merlin",
+    "breed": "Coton de Tulear",
+    "age": "15"
+  },
+  {
+    "id": 134,
+    "name": "Hugo",
+    "breed": "Chihuahua",
     "age": "2"
   }
 ]
