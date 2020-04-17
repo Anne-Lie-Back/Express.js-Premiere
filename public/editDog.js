@@ -3,11 +3,10 @@
 function showEditForm(dog){
 
     const backgroundDiv = document.createElement('div')
-    backgroundDiv.setAttribute('id', 'background')
+    backgroundDiv.setAttribute('id', 'clickBackground')
     backgroundDiv.addEventListener('click', () => {
         removeEditDiv(backgroundDiv)
     })
-    backgroundDiv.setAttribute('id', 'clickBackground')
 
     const editFormContainer = document.createElement('div')
     editFormContainer.setAttribute('class','container denseContainer')
@@ -34,7 +33,6 @@ function showEditForm(dog){
     updateAge.placeholder = "Age"
 
     let submitUpdateButton = document.createElement('button')
-    //submitUpdateButton.type = "button"
     submitUpdateButton.innerText = "yes, PUPDATE!"
     submitUpdateButton.addEventListener('click', () => {
         sendUpdate(dog, updateName, updateBreed, updateAge, divEditForm)
@@ -50,11 +48,6 @@ function showEditForm(dog){
     backgroundDiv.appendChild(editFormContainer)
     
     document.querySelector('body').appendChild(backgroundDiv)
-}
-
-function removeEditDiv(backgroundDiv){
-    backgroundDiv.parentNode.removeChild(backgroundDiv)
-    console.log('removed!')
 }
 
 function sendUpdate(dog, updateName, updateBreed, updateAge){
@@ -91,4 +84,8 @@ function sendUpdate(dog, updateName, updateBreed, updateAge){
         removeEditDiv(backgroundDiv)
         fetchAllDogs()
     }
+}
+
+function removeEditDiv(backgroundDiv){
+    backgroundDiv.parentNode.removeChild(backgroundDiv)
 }

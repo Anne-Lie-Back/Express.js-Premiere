@@ -13,7 +13,7 @@ function generateID(){
     return new Date().getUTCMilliseconds()
 }
 
-// GET
+// ***************** GET ****************
 app.get('/api/dogs', (req, res) => {
     res.status(200).send(dogs)
 })
@@ -27,7 +27,7 @@ app.get('/api/dogs/:id', (req, res) => {
     res.status(200).send(dog)
 })
 
-//POST
+//****************** POST ********************
 app.post('/api/dogs', (req, res) => {
     if(!req.body.breed||!req.body.breed||!req.body.age||!req.body.age.match(/^[0-9]+$/)){
         return res.status(400).send('You missed something in your input. Name? Breed? Age in number of years?')
@@ -51,7 +51,7 @@ app.post('/api/dogs', (req, res) => {
     res.status(201).send(dog)
 })
 
-//PUT
+//****************** PUT ******************
 app.put('/api/dogs/:id', (req, res) => {
     const dog = dogs.find(d => d.id == parseInt(req.params.id))
     if(!dog){
@@ -71,7 +71,7 @@ app.put('/api/dogs/:id', (req, res) => {
     res.status(200).send(dog)
 })
 
-//DELETE
+//********************* DELETE ********************
 
 app.delete('/api/dogs/:id', (req, res) => {
     const dog = dogs.find( d => d.id === parseInt(req.params.id))
@@ -87,7 +87,7 @@ app.delete('/api/dogs/:id', (req, res) => {
     res.status(200).send(dog)
 })
 
-//WHERE TO LISTEN
+//****************** WHERE TO LISTEN ****************
 app.listen(5000, () => {
     console.log(`Listening to port 5000`)
 })

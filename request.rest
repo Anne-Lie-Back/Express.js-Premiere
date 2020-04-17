@@ -2,7 +2,7 @@ GET http://localhost:5000/api/dogs
 
 ###
 
-GET http://localhost:5000/api/dogs/590
+GET http://localhost:5000/api/dogs/740
 
 ###
 
@@ -10,21 +10,21 @@ POST http://localhost:5000/api/dogs
 Content-Type: application/json
 
 {
-    "name": "Tommy",
-    "breed":"Grand Danois",
-    "age":"5"
+    "name": "Furion",
+    "breed":"Corgi",
+    "age":"1"
 }
 
 ###
 
-PUT http://localhost:5000/api/dogs/590
+PUT http://localhost:5000/api/dogs/199
 Content-Type: application/json
 
 {
-    "name": "Ninja",
-    "breed": "Sheltie",
-    "age": "5"
+    "name": "Ozzy",
+    "breed": "Chihuahua",
+    "age": "9"
 }
 
 ###
-DELETE http://localhost:5000/api/dogs/590
+DELETE http://localhost:5000/api/dogs/257
