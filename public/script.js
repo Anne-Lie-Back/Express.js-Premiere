@@ -210,16 +210,21 @@ function sendUpdate(dog, updateName, updateBreed, updateAge){
 /******************** SPECIFIC DOG BY ID - FUNCTIONS *****************/
 
 function showSpecificDogById(){
-    const id = document.getElementById('idInput').value
-    fetch(`http://localhost:5000/api/dogs/${id}`). then((response) => {
-        if(response.status === 404){
-            printSpecificDog()
-        }else{
-            return response.json()
-        }
-    }).then((dogs) => {
-        printSpecificDog(dogs)
-    })
+    const id = document.getElementById('idInput')
+    if(id.value === ""){
+        id.placeholder = "WE REALLY NEED ID"
+    }
+    else{
+        fetch(`http://localhost:5000/api/dogs/${id.value}`). then((response) => {
+            if(response.status === 404){
+                printSpecificDog()
+            }else{
+                return response.json()
+            }
+        }).then((dogs) => {
+            printSpecificDog(dogs)
+        })
+    }
 }
 
 function printSpecificDog(dog){

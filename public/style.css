@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 html {
@@ -119,7 +120,6 @@ button{
     box-shadow: 0 0 3px black;
     padding: 0.5rem 1rem;
     margin: 0.7rem 2rem 0.5rem 0;
-    outline: none;
 }
 
 button:hover{

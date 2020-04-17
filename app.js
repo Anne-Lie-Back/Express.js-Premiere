@@ -15,7 +15,7 @@ function generateID(){
 
 // GET
 app.get('/api/dogs', (req, res) => {
-    res.send(dogs)
+    res.status(200).send(dogs)
 })
 
 app.get('/api/dogs/:id', (req, res) => {
@@ -24,7 +24,7 @@ app.get('/api/dogs/:id', (req, res) => {
     if(!dog){
         return res.status(404).send('Cannot find dog with this ID')
     }
-    res.send(dog)
+    res.status(200).send(dog)
 })
 
 //POST
@@ -48,7 +48,7 @@ app.post('/api/dogs', (req, res) => {
         })   
     })
 
-    res.send(dog)
+    res.status(201).send(dog)
 })
 
 //PUT
@@ -68,7 +68,7 @@ app.put('/api/dogs/:id', (req, res) => {
             console.log('Dog pupdated!')
         })   
     })
-    res.send(dog)
+    res.status(200).send(dog)
 })
 
 //DELETE
@@ -84,7 +84,7 @@ app.delete('/api/dogs/:id', (req, res) => {
     fs.writeFile('./dogs.json', data, 'utf8', () => {
         console.log('Dog deleted!')
     }) 
-    res.send(dog)
+    res.status(200).send(dog)
 })
 
 //WHERE TO LISTEN
